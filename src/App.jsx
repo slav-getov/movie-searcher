@@ -4,10 +4,12 @@ import axios from "axios";
 import GlobalStyleProvider from "./components/GlobalStyleProvider";
 import Header from "./components/header/Header";
 import Form from "./components/forms/Form";
+import { useGetMovieByTitleQuery } from "./services/movie";
 const App = () => {
-  const baseReqUrl = "https://www.omdbapi.com/?t=inception&apikey=6f309716";
-  const baseReqUrlNoParams = "https://www.omdbapi.com/";
-
+  const { data, error, isLoading } = useGetMovieByTitleQuery({
+    title: "inception",
+    apikey: "6f309716",
+  });
   // const getData = async () => {
   //   try {
   //     const rawData = await axios.get(baseReqUrlNoParams, {
@@ -21,16 +23,17 @@ const App = () => {
   //     console.log(error);
   //   }
   // };
-  const [data, setData] = useState({});
+  //const [data, setData] = useState({});
 
-  useEffect(() => {
-    //getData();
-  }, []);
+  // useEffect(() => {
+  //   //getData();
+  // }, []);
   return (
     <>
       <GlobalStyleProvider />
       <Header title="Search and save your movies." />
       <Form />
+      {console.log(data)}
       <Outlet />
     </>
   );

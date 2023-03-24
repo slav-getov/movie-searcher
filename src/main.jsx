@@ -7,6 +7,8 @@ import {
 import App from "./App";
 import Favourites from "./routes/favourites/Favourites";
 import Watchlist from "./routes/watchlist/Watchlist";
+import { Provider } from "react-redux";
+import { store } from "./store/store";
 
 const router = createBrowserRouter([
   {
@@ -27,6 +29,8 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <Router router={router} />
+    <Provider store={store}>
+      <Router router={router} />
+    </Provider>
   </React.StrictMode>
 );
