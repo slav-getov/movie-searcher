@@ -1,16 +1,22 @@
-import { createSlice } from "redux-starter-kit";
-
-const formSlice = createSlice({
-  slice: "formData",
-  initialState: "",
+import { createSlice } from "@reduxjs/toolkit";
+const initialState = {
+  value: "",
+};
+export const formSlice = createSlice({
+  name: "form",
+  initialState,
   reducers: {
-    updateFormSearchParams: (state, action) => state + action.payload,
-    nullFormSearchParams: (state) => (state = initialState),
+    updateFormSearchParams: (state, action) => {
+      console.log(action.payload);
+      state.value = action.payload;
+    },
+    nullFormSearchParams: (state) => {
+      state.value = initialState;
+    },
   },
 });
 
-const { actions, reducer } = formSlice;
+export const { updateFormSearchParams, nullFormSearchParams } =
+  formSlice.actions;
 
-export const { updateFormSearchParams, nullFormSearchParams } = actions;
-
-export default reducer;
+export default formSlice.reducer;
