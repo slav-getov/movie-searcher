@@ -1,9 +1,8 @@
-import React from 'react'
-
+import React from "react";
+import { useSelector } from "react-redux";
 const Watchlist = () => {
-  return (
-    <div>This is the Watchlist</div>
-  )
-}
+  const watchlistItems = useSelector((state) => state.watchlist.value);
+  return <div>This is the Watchlist{console.log(watchlistItems)}</div>;
+};
 
-export default Watchlist
+export default Watchlist;

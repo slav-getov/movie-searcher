@@ -31,6 +31,8 @@ const Form = () => {
         writer={data.Writer}
         poster={data.Poster}
         plot={data.Plot}
+        id={data.imdbID}
+        isComplex
       />
     );
   } else if (isError) {
