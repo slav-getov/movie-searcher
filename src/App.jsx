@@ -8,7 +8,6 @@ import { useGetMovieByTitleQuery } from "./services/movie";
 const App = () => {
   const { data, error, isLoading } = useGetMovieByTitleQuery({
     title: "inception",
-    apikey: "6f309716",
   });
   // const getData = async () => {
   //   try {
