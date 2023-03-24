@@ -25,10 +25,18 @@ const Form = () => {
   if (isFetching) {
     content = <p>Data is currently loading...</p>;
   } else if (isSuccess) {
-    content = <MovieElement title={data.Title} writer={data.Writer} />;
+    content = (
+      <MovieElement
+        title={data.Title}
+        writer={data.Writer}
+        poster={data.Poster}
+        plot={data.Plot}
+      />
+    );
   } else if (isError) {
     content = <p>There was an error with your request</p>;
   }
+  console.log(skip);
   return (
     <>
       <form
@@ -36,7 +44,7 @@ const Form = () => {
           e.preventDefault();
 
           dispatch(updateFormSearchParams(e.target.search.value));
-          setSkip((prev) => !prev);
+          setSkip(false);
 
           console.log("you submitted");
         }}
