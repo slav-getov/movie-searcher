@@ -7,14 +7,15 @@ import {
 import App from "./App";
 import Favourites from "./routes/favourites/Favourites";
 import Watchlist from "./routes/watchlist/Watchlist";
+import Form from "./components/forms/Form";
 import { Provider } from "react-redux";
 import { store } from "./store/store";
 
 const router = createBrowserRouter([
   {
-    path: "/",
     element: <App />,
     children: [
+      { path: "/", element: <Form /> },
       {
         path: "/watchlist",
         element: <Watchlist />,
