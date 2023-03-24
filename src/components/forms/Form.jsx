@@ -8,15 +8,18 @@ import {
 } from "../slices/formSlice";
 
 const Form = () => {
-  const init = useSelector((state) => state.form.value);
-  console.log(init);
+  const value = useSelector((state) => state.form.value);
+
   const dispatch = useDispatch();
-  //console.log(init); works
+
   return (
     <form
       onSubmit={(e) => {
         e.preventDefault();
-        dispatch(nullFormSearchParams());
+        //console.log(e.target.search.value);
+        console.log("value on submit is " + e.target.search.value);
+        dispatch(updateFormSearchParams(e.target.search.value));
+        //dispatch(nullFormSearchParams());
         console.log("you submitted");
       }}
     >
@@ -26,7 +29,7 @@ const Form = () => {
           <input
             type="text"
             name="search"
-            onChange={(e) => dispatch(updateFormSearchParams(e.target.value))}
+            onChange={(e) => console.log(e.target.value)}
           />
         </label>
       </FieldsetStyles>

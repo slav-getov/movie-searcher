@@ -7,7 +7,7 @@ export const formSlice = createSlice({
   initialState,
   reducers: {
     updateFormSearchParams: (state, action) => {
-      console.log(action.payload);
+      //console.log(action.payload);
       state.value = action.payload;
     },
     nullFormSearchParams: (state) => {
