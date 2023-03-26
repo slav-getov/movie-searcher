@@ -11,7 +11,7 @@ export const formSlice = createSlice({
       state.value = action.payload;
     },
     nullFormSearchParams: (state) => {
-      state.value = initialState;
+      state.value = initialState.value;
     },
   },
 });

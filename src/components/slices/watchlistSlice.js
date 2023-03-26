@@ -8,6 +8,9 @@ export const watchlistSlice = createSlice({
   initialState,
   reducers: {
     addWatchlistitem: (state, action) => {
+      if (state.value.some((entry) => action.payload.id == entry.id)) {
+        return;
+      }
       console.log(action.payload);
       state.value = [...state.value, action.payload];
     },

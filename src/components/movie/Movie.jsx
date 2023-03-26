@@ -2,7 +2,15 @@ import React, { useRef } from "react";
 import ActionableButton from "../shared/ActionableButton";
 import { useDispatch } from "react-redux";
 import { addWatchlistitem } from "../slices/watchlistSlice";
-const MovieElement = ({ title, writer, poster, plot, isComplex, id }) => {
+const MovieElement = ({
+  title,
+  writer,
+  poster,
+  plot,
+  isComplex,
+  id,
+  children,
+}) => {
   const myTitleRef = useRef(null);
   const dispatch = useDispatch();
   return (
@@ -34,10 +42,7 @@ const MovieElement = ({ title, writer, poster, plot, isComplex, id }) => {
           />
         </>
       ) : (
-        <>
-          <p>{title}</p>
-          <ActionableButton title="Remove Item" backgroundColor={"blue"} />
-        </>
+        <>{children}</>
       )}
     </div>
   );

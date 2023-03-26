@@ -6,6 +6,7 @@ import {
   updateFormSearchParams,
   nullFormSearchParams,
 } from "../slices/formSlice";
+
 import { useGetMovieByTitleQuery } from "../../services/movie";
 import MovieElement from "../movie/Movie";
 const Form = () => {
@@ -13,6 +14,7 @@ const Form = () => {
 
   //adding
   const [skip, setSkip] = useState(true);
+  const [formDataBeforeSubmit, setFormDataBeforeSubmit] = useState("");
   const value = useSelector((state) => state.form.value);
   const { data, isFetching, isSuccess, isError } = useGetMovieByTitleQuery(
     {
@@ -38,17 +40,14 @@ const Form = () => {
   } else if (isError) {
     content = <p>There was an error with your request</p>;
   }
-  console.log(skip);
+
   return (
     <>
       <form
         onSubmit={(e) => {
           e.preventDefault();
-
-          dispatch(updateFormSearchParams(e.target.search.value));
+          dispatch(updateFormSearchParams(formDataBeforeSubmit));
           setSkip(false);
-
-          console.log("you submitted");
         }}
       >
         <FieldsetStyles>
@@ -57,7 +56,7 @@ const Form = () => {
             <input
               type="text"
               name="search"
-              onChange={(e) => console.log(e.target.value)}
+              onChange={(e) => setFormDataBeforeSubmit(e.target.value)}
             />
           </label>
         </FieldsetStyles>
