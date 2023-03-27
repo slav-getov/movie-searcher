@@ -16,13 +16,16 @@ const Form = () => {
   const [skip, setSkip] = useState(true);
   const [formDataBeforeSubmit, setFormDataBeforeSubmit] = useState("");
   const value = useSelector((state) => state.form.value);
-  const { data, isFetching, isSuccess, isError } = useGetMovieByTitleQuery(
-    {
-      title: value,
-    },
-    { skip }
-  );
+  const { data, isFetching, isSuccess, isError, error } =
+    useGetMovieByTitleQuery(
+      {
+        title: value,
+      },
+      { skip }
+    );
+
   let content;
+  console.log(data, isError, error);
   // is loading is only for first, is fetching is for first and subsequent
   if (isFetching) {
     content = <p>Data is currently loading...</p>;
@@ -37,8 +40,10 @@ const Form = () => {
         isComplex
       />
     );
-  } else if (isError) {
-    content = <p>There was an error with your request</p>;
+  } else if (isError || error) {
+    const { Error } = error.data;
+    console.log(Error);
+    content = <p>{Error}</p>;
   }
 
   return (

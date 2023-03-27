@@ -5,6 +5,7 @@ import MovieElement from "../../components/movie/Movie";
 import { useSelector } from "react-redux";
 const Watchlist = () => {
   const watchlistItems = useSelector((state) => state.watchlist.value);
+  console.log(watchlistItems);
   return (
     <div>
       {watchlistItems.map((singleItem) => (

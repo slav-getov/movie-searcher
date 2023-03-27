@@ -6,7 +6,11 @@ export const movieApi = createApi({
   baseQuery: fetchBaseQuery({ baseUrl: baseReqUrlNoParams }),
   endpoints: (builder) => ({
     getMovieByTitle: builder.query({
-      query: ({ title }) => `/?t=${title}&apikey=${apiKey}`,
+      query: ({ title }) => ({
+        url: `/?t=${title}&apikey=${apiKey}`,
+        validateStatus: (response, result) =>
+          response.status === 200 && !result.Error,
+      }),
     }),
   }),
 });
