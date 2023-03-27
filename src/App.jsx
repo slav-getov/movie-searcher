@@ -1,12 +1,13 @@
-import { useState } from "react";
+import { Outlet } from "react-router-dom";
 import GlobalStyleProvider from "./components/GlobalStyleProvider";
-const App = () => {
-  const [count, setCount] = useState(0);
+import Header from "./components/header/Header";
 
+const App = () => {
   return (
     <>
       <GlobalStyleProvider />
-      Test
+      <Header title="Search and save your movies." />
+      <Outlet />
     </>
   );
 };

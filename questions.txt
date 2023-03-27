@@ -1,0 +1,2 @@
+1. What version of router do you use - 5 or 6?
+2. Circular imports ??? Is this a common pattern ? https://codesandbox.io/s/rw7ppj4z0m?from-embed=&file=/src/counterB.tsx
