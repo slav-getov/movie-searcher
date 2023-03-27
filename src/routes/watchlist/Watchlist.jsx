@@ -10,15 +10,19 @@ const Watchlist = () => {
   console.log(watchlistItems);
   return (
     <div>
-      {watchlistItems.map((singleItem) => (
-        <MovieElement key={singleItem.id} title={singleItem.title}>
-          <ActionableButton
-            title="Remove"
-            backgroundColor="red"
-            onClick={() => dispatch(removeWatchlistItem(singleItem.id))}
-          />
-        </MovieElement>
-      ))}
+      {watchlistItems.length > 0 ? (
+        watchlistItems.map((singleItem) => (
+          <MovieElement key={singleItem.id} title={singleItem.title}>
+            <ActionableButton
+              title="Remove"
+              backgroundColor="red"
+              onClick={() => dispatch(removeWatchlistItem(singleItem.id))}
+            />
+          </MovieElement>
+        ))
+      ) : (
+        <p>No items in your watchlist. Add some.</p>
+      )}
     </div>
   );
 };
