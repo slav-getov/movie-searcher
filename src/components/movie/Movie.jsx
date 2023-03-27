@@ -1,5 +1,6 @@
 import React, { useRef } from "react";
 import ActionableButton from "../shared/ActionableButton";
+import { MovieContainer } from "./movie.style.css";
 import { useDispatch } from "react-redux";
 import { addWatchlistitem } from "../slices/watchlistSlice";
 const MovieElement = ({
@@ -14,7 +15,7 @@ const MovieElement = ({
   const myTitleRef = useRef(null);
   const dispatch = useDispatch();
   return (
-    <div>
+    <MovieContainer isComplex={isComplex}>
       <p ref={myTitleRef}>{title}</p>
       {isComplex ? (
         <>
@@ -44,7 +45,7 @@ const MovieElement = ({
       ) : (
         <>{children}</>
       )}
-    </div>
+    </MovieContainer>
   );
 };
 

@@ -21,7 +21,7 @@ const Watchlist = () => {
           </MovieElement>
         ))
       ) : (
-        <p>No items in your watchlist. Add some.</p>
+        <p>No items in your watchlist. Why don't you add some?</p>
       )}
     </div>
   );
