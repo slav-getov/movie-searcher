@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import ActionableButton from "../shared/ActionableButton";
-import { FieldsetStyles } from "./form.style.css";
+import { FormStyle, FieldsetStyles, SearchInputStyle } from "./form.style.css";
 import { useSelector, useDispatch } from "react-redux";
 import {
   updateFormSearchParams,
@@ -48,7 +48,7 @@ const Form = () => {
 
   return (
     <>
-      <form
+      <FormStyle
         onSubmit={(e) => {
           e.preventDefault();
           dispatch(updateFormSearchParams(formDataBeforeSubmit));
@@ -56,18 +56,19 @@ const Form = () => {
         }}
       >
         <FieldsetStyles>
-          <label>
-            Try searching for your favourite movies.
-            <input
+          <label>Try searching for your favourite movies.</label>
+          <div>
+            <SearchInputStyle
               type="text"
               name="search"
+              placeholder="Search here"
               onChange={(e) => setFormDataBeforeSubmit(e.target.value)}
             />
-          </label>
+          </div>
         </FieldsetStyles>
 
         <ActionableButton title="Search" backgroundColor={"blue"} />
-      </form>
+      </FormStyle>
       {content}
     </>
   );
